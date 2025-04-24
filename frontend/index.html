@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexio — Your Fitness Companion</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <!-- Custom Animations -->
+    <style>
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal text-gray-800">
+<!-- Header -->
+<header class="sticky top-0 bg-white backdrop-blur-md shadow z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center space-x-2 text-2xl font-bold text-teal-600 hover:text-teal-700 transition-colors duration-200">
+            <!-- Dumbbell Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3v4m0 0V3m0 4h12m0 0V3m0 4v14m0 0v-4m0 4H6m0 0v4m0-4V7" />
+            </svg>
+            <span>Flexio</span>
+        </a>
+        <nav class="space-x-8">
+            <a href="#features" class="hover:text-teal-600 transition-colors duration-200">Features</a>
+            <a href="#testimonials" class="hover:text-teal-600 transition-colors duration-200">Testimonials</a>
+            <a hx-get="/login" hx-target="#modal" hx-swap="innerHTML" href="#" class="hover:text-teal-600 transition-colors duration-200">Login</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 text-white pt-24 pb-32 overflow-hidden">
+    <div class="container mx-auto px-6 text-center max-w-2xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg fade-in-up" style="animation-delay:0.2s;">Track Your Workouts, Achieve Your Goals</h1>
+        <p class="text-lg md:text-xl mb-8 opacity-90 fade-in-up" style="animation-delay:0.4s;">Flexio helps you plan, log, and analyze your fitness journey with ease and style.</p>
+        <button hx-get="/signup" hx-target="#modal" hx-swap="innerHTML"
+                class="bg-white text-teal-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 shadow-lg transform hover:scale-105 transition-all duration-200 fade-in-up"
+                style="animation-delay:0.6s;">
+            Get Started Free
+        </button>
+    </div>
+    <!-- Wave Divider -->
+    <svg class="absolute bottom-0 w-full" viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#f7fafc" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-6 max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transform hover:scale-105 transition-all duration-300 fade-in-up" style="animation-delay:0.2s;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-teal-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5V4a2 2 0 012-2h2a2 2 0 012 2v1m-6 4h6m-6 4h6m-6 4h6" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">Workout Logging</h3>
+            <p class="text-gray-600 text-center">Quickly log sets, reps, & weights so you can focus on lifting.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transform hover:scale-105 transition-all duration-300 fade-in-up" style="animation-delay:0.4s;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-teal-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18M18 13v6M13 8v11M8 14v7M3 17v4" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">Progress Tracking</h3>
+            <p class="text-gray-600 text-center">Beautiful charts & stats to keep you pushing forward.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transform hover:scale-105 transition-all duration-300 fade-in-up" style="animation-delay:0.6s;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-teal-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M12 12a4 4 0 100-8 4 4 0 000 8z" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2 text-center">Community</h3>
+            <p class="text-gray-600 text-center">Share workouts & tips, and cheer each other on.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-white py-20">
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 fade-in-up" style="animation-delay:0.2s;">What Our Users Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 p-6 rounded-2xl shadow fade-in-up" style="animation-delay:0.4s;">
+                <p class="italic mb-4">“Flexio has transformed how I track workouts. The clean interface and insightful charts keep me motivated!”</p>
+                <h4 class="font-semibold">— Alex P.</h4>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-2xl shadow fade-in-up" style="animation-delay:0.6s;">
+                <p class="italic mb-4">“Love the community feature. Sharing routines and tips with friends never felt this seamless.”</p>
+                <h4 class="font-semibold">— Jamie L.</h4>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-2xl shadow fade-in-up" style="animation-delay:0.8s;">
+                <p class="italic mb-4">“The progress tracking charts are beautiful and really help me see gains over time.”</p>
+                <h4 class="font-semibold">— Sam K.</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Container -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <!-- HTMX will fill this -->
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-100 py-6">
+    <div class="container mx-auto px-6 text-center text-gray-600">
+        © 2025 Flexio. Designed with ❤ by You.
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+    function showModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('opacity-100'), 10);
+    }
+    document.body.addEventListener('htmx:afterSwap', (e) => {
+        if (e.detail.target.id === 'modal') showModal();
+    });
+    document.body.addEventListener('click', (e) => {
+        if (e.target.id === 'modal') {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('opacity-100');
+            modal.addEventListener('transitionend', () => modal.classList.add('hidden'), { once: true });
+        }
+    });
+</script>
+</body>
+</html>
