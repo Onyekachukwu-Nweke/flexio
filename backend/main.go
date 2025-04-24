@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"flexio-api/internal/app"
+	"flexio-api/internal/routes"
 	"fmt"
 	"net/http"
 	"time"
@@ -20,9 +21,10 @@ func main() {
 
 	app.Logger.Println("Flexio API is running")
 
-	http.HandleFunc("/health", app.HealthCheck)
+	r := routes.SetupRoutes(app)
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%d", port),
+		Handler:      r,
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  time.Second * 10,
 		WriteTimeout: time.Second * 30,
