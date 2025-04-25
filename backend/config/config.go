@@ -30,7 +30,7 @@ func LoadConfig(envFile string) (*Config, error) {
 		DBUser:     getEnv("DB_USERNAME", "postgres"),
 		DBPassword: getEnv("DB_PASSWORD", "postgres"),
 		DBName:     getEnv("DB_NAME", "intrazine"),
-		DBSSLMode:  getEnv("DB_SSLMODE", "disable"),
+		//DBSSLMode:  getEnv("DB_SSLMODE", "disable"),
 	}
 
 	return config, nil
