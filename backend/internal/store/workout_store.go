@@ -162,7 +162,7 @@ func (pg *PostgresWorkoutStore) UpdateWorkout(workout *Workout) error {
 	if rowsAffected == 0 {
 		return sql.ErrNoRows
 	}
-	return nil
+	return tx.Commit()
 }
 
 func (pg *PostgresWorkoutStore) DeleteWorkout(id string) error {
